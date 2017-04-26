@@ -444,7 +444,7 @@ nav {
       top: 15px;
       right: 15px;
       font-size: 36px;
-      color: @color-blue;
+      color: @color-green;
     }
 
   }
@@ -611,7 +611,7 @@ header[role='banner'] {
 
     .fa {
       font-size: 36px;
-      color: @color-blue;
+      color: @color-green;
     }
 
     .fa-close {
@@ -680,6 +680,18 @@ header[role='banner'].fixed {
   .logo-header-small {
     display: block;
     width: 201px;
+
+    @media(max-width: 480px) {
+      width: 58px;
+      overflow: hidden;
+
+      img {
+        width: auto;
+        height: auto;
+      }
+
+    }
+
   }
 
   .header-contacts {
@@ -788,15 +800,13 @@ header[role='banner'].fixed {
 
   }
 
-  /*@media(max-width: 768px) {
+  @media(max-width: 480px) {
 
     .header-contacts {
-      width: ~"calc(100% - 120px)";
-      display: block;
-      text-align: center;
+      padding: 0;
     }
 
-  }*/
+  }
 
 }
 
@@ -1066,6 +1076,24 @@ footer[role='contentinfo'] {
   padding: 70px 0 0 0;
   position: relative;
 
+  .company-name {
+    display: none;
+
+    @media(max-width: 480px) {
+      display: block;
+      background: #00a200;
+      width: 280px;
+      height: 50px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -60px;
+      margin: auto;
+      border-radius: 20px;
+    }
+
+  }
+
   &:before {
     content: '';
     display: block;
@@ -1076,6 +1104,11 @@ footer[role='contentinfo'] {
     top: 0;
     left: 0;
     z-index: 100;
+
+    @media(max-width: 1230px) {
+      display: none;
+    }
+
   }
 
   .top-offers {
@@ -1247,6 +1280,10 @@ footer[role='contentinfo'] {
       margin: 10px;
     }
 
+  }
+
+  @media(max-width: 480px) {
+    padding: 90px 0 15px 0;
   }
 
 }

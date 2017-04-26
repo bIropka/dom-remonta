@@ -4,7 +4,7 @@ $(window).ready(function() {
      *********** init
      ******************************************************************************************************************/
 
-    setTimeout(function() {
+    setTimeout(function () {
         $('.wrapper').animate({opacity: 1}, 500);
     }, 500);
 
@@ -14,27 +14,29 @@ $(window).ready(function() {
 
             if ($(window).scrollTop() > 300) {
 
-                $('header[role="banner"]').addClass('reduced');
+                $('header[role="banner"]').addClass('fixed');
 
                 if ($(window).scrollTop() > 500) {
 
+                    $('header[role="banner"]').css('top', '0px');
                     $('.top-arrow').fadeIn();
 
                 } else {
 
+                    $('header[role="banner"]').css('top', '0');
                     $('.top-arrow').fadeOut();
 
                 }
 
             } else {
 
-                $('header[role="banner"]').removeClass('reduced');
+                $('header[role="banner"]').removeClass('fixed');
 
             }
 
         } else {
 
-            $('header[role="banner"]').addClass('reduced').css('top', '0px');
+            $('header[role="banner"]').addClass('fixed').css('top', '0px');
 
         }
 
@@ -42,111 +44,119 @@ $(window).ready(function() {
 
     checkHeader();
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
 
         checkHeader();
 
     });
 
-    if($(window).width() < 768) {
+    if ($(window).width() < 1231) {
         $('nav').appendTo('.mobile-nav');
+    } else {
+        $('nav').insertBefore('.header-contacts');
+    }
+
+    if ($(window).width() < 768) {
         $('.header-contacts .hours').appendTo('.mobile-nav');
         $('.header-contacts .callback').appendTo('.mobile-nav');
     } else {
-        $('nav').insertBefore('.header-contacts');
-        $('.mobile-nav .callback').prependTo('.header-contacts');
-        $('.mobile-nav .hours').prependTo('.header-contacts');
+        $('.mobile-nav .hours').insertAfter('.header-contacts a');
+        $('.mobile-nav .callback').insertAfter('.hours');
     }
 
-    $(window).resize(function() {
+    $(window).resize(function () {
 
         checkHeader();
 
-        if($(window).width() < 768) {
+        if ($(window).width() < 1231) {
             $('nav').appendTo('.mobile-nav');
+        } else {
+            $('nav').insertBefore('.header-contacts');
+        }
+
+        if ($(window).width() < 768) {
             $('.header-contacts .hours').appendTo('.mobile-nav');
             $('.header-contacts .callback').appendTo('.mobile-nav');
         } else {
-            $('nav').insertBefore('.header-contacts');
-            $('.mobile-nav .callback').prependTo('.header-contacts');
-            $('.mobile-nav .hours').prependTo('.header-contacts');
+            $('.mobile-nav .hours').insertAfter('.header-contacts a');
+            $('.mobile-nav .callback').insertAfter('.hours');
         }
 
     });
 
-});
+    /*******************************************************************************************************************
+     *********** clicks
+     ******************************************************************************************************************/
 
-/*******************************************************************************************************************
- *********** clicks
- ******************************************************************************************************************/
+    $('.burger').click(function () {
+        $('.mobile-nav').addClass('active');
+    });
 
-$('.burger').click(function() {
-    $('.mobile-nav').addClass('active');
-});
+    $('.mobile-nav .fa-close').click(function () {
+        $('.mobile-nav').removeClass('active');
+    });
 
-$('.mobile-nav .fa-close').click(function() {
-    $('.mobile-nav').removeClass('active');
-});
+    $('.top-arrow').click(function () {
+        $('body, html').animate({
+            scrollTop: 0
+        }, 600);
+    });
 
-$('.top-arrow').click(function () {
-    $('body, html').animate({
-        scrollTop: 0
-    }, 600);
-});
-
-$('.faq-item .question').click(function() {
-    $(this).parent().siblings('.faq-item').find('.question').removeClass('active');
-    $(this).parent().siblings('.faq-item').find('.answer').fadeOut(0);
-    $(this).toggleClass('active');
-    $(this).siblings('.answer').fadeToggle();
-});
+    $('.faq-item .question').click(function () {
+        $(this).parent().siblings('.faq-item').find('.question').removeClass('active');
+        $(this).parent().siblings('.faq-item').find('.answer').fadeOut(0);
+        $(this).toggleClass('active');
+        $(this).siblings('.answer').fadeToggle();
+    });
 
 
-/*******************************************************************************************************************
- *********** sliders
- ******************************************************************************************************************/
+    /*******************************************************************************************************************
+     *********** sliders
+     ******************************************************************************************************************/
 
-$('.slider').slick({
-    appendArrows: '.slider-control',
-    prevArrow: '.slider-prev',
-    nextArrow: '.slider-next',
-    dots: true
-});
+    $('.slider').slick({
+        appendArrows: '.slider-control',
+        prevArrow: '.slider-prev',
+        nextArrow: '.slider-next',
+        dots: true
+    });
 
-$('.slider-calculator').slick({
-    appendArrows: '.slider-calc-control',
-    prevArrow: '.slider-calc-prev',
-    nextArrow: '.slider-calc-next',
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-        {
-            breakpoint: 1231,
-            settings: {
-                slidesToShow: 2
+    $('.slider-calculator').slick({
+        appendArrows: '.slider-calc-control',
+        prevArrow: '.slider-calc-prev',
+        nextArrow: '.slider-calc-next',
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1231,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 981,
+                settings: {
+                    slidesToShow: 1
+                }
             }
-        },
-        {
-            breakpoint: 981,
-            settings: {
-                slidesToShow: 1
-            }
-        }
-    ]
-});
+        ]
+    });
 
-$('.slider-reviews').slick({
-    appendArrows: '.slider-reviews-control',
-    prevArrow: '.slider-reviews-prev',
-    nextArrow: '.slider-reviews-next',
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    responsive: [
-        {
-            breakpoint: 981,
-            settings: {
-                slidesToShow: 1
+    $('.slider-reviews').slick({
+        appendArrows: '.slider-reviews-control',
+        prevArrow: '.slider-reviews-prev',
+        nextArrow: '.slider-reviews-next',
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 981,
+                settings: {
+                    slidesToShow: 1
+                }
             }
-        }
-    ]
+        ]
+    });
+
 });

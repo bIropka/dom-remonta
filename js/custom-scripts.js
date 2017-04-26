@@ -51,17 +51,19 @@ $(window).ready(function() {
     });
 
     if ($(window).width() < 1231) {
-        $('nav').appendTo('.mobile-nav');
-    } else {
-        $('nav').insertBefore('.header-contacts');
-    }
-
-    if ($(window).width() < 768) {
         $('.header-contacts .hours').appendTo('.mobile-nav');
+        $('nav').appendTo('.mobile-nav');
         $('.header-contacts .callback').appendTo('.mobile-nav');
     } else {
+        $('nav').insertBefore('.header-contacts');
         $('.mobile-nav .hours').insertAfter('.header-contacts a');
         $('.mobile-nav .callback').insertAfter('.hours');
+    }
+
+    if ($(window).width() < 641) {
+        $('.calculator-header').insertAfter('.hours');
+    } else {
+        $('.calculator-header').insertAfter('.logo-header-small');
     }
 
     $(window).resize(function () {
@@ -69,17 +71,19 @@ $(window).ready(function() {
         checkHeader();
 
         if ($(window).width() < 1231) {
-            $('nav').appendTo('.mobile-nav');
-        } else {
-            $('nav').insertBefore('.header-contacts');
-        }
-
-        if ($(window).width() < 768) {
             $('.header-contacts .hours').appendTo('.mobile-nav');
+            $('nav').appendTo('.mobile-nav');
             $('.header-contacts .callback').appendTo('.mobile-nav');
         } else {
+            $('nav').insertBefore('.header-contacts');
             $('.mobile-nav .hours').insertAfter('.header-contacts a');
             $('.mobile-nav .callback').insertAfter('.hours');
+        }
+
+        if ($(window).width() < 641) {
+            $('.calculator-header').insertAfter('.hours');
+        } else {
+            $('.calculator-header').insertAfter('.logo-header-small');
         }
 
     });
@@ -100,13 +104,6 @@ $(window).ready(function() {
         $('body, html').animate({
             scrollTop: 0
         }, 600);
-    });
-
-    $('.faq-item .question').click(function () {
-        $(this).parent().siblings('.faq-item').find('.question').removeClass('active');
-        $(this).parent().siblings('.faq-item').find('.answer').fadeOut(0);
-        $(this).toggleClass('active');
-        $(this).siblings('.answer').fadeToggle();
     });
 
     $('.button-order').click(function() {

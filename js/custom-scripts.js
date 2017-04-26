@@ -109,6 +109,30 @@ $(window).ready(function() {
         $(this).siblings('.answer').fadeToggle();
     });
 
+    $('.button-order').click(function() {
+
+        $('.window-order').fadeIn();
+
+    });
+
+    $('.button-callback').click(function() {
+
+        $('.window-callback').fadeIn();
+
+    });
+
+    $('.window').click(function (event) {
+        $target = $(event.target);
+        if (!$target.closest($('.window-inner')).length) $('.window').fadeOut();
+        if ($target.hasClass('fa-close')) $('.window').fadeOut();
+    });
+
+    $('.top-arrow').click(function () {
+        $('body, html').animate({
+            scrollTop: 0
+        }, 600);
+    });
+
 
     /*******************************************************************************************************************
      *********** sliders

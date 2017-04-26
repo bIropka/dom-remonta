@@ -663,11 +663,10 @@ header[role='banner'].reduced {
   }
 
   .header-contacts {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: auto;
     text-align: left;
+    padding-right: 215px;
+    position: relative;
 
     a {
       display: block;
@@ -708,6 +707,14 @@ header[role='banner'].reduced {
         margin: 0 15px;
       }
 
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
     }
 
   }
@@ -785,7 +792,256 @@ header[role='banner'].reduced {
 ***********************************************************************************************************************/
 
 footer[role='contentinfo'] {
+  display: block;
+  width: 100%;
+  z-index: 1;
+  background: url(../source/images/background-footer.png) no-repeat center top;
+  background-size: cover;
+  padding: 60px 0;
 
+  @media(max-width: 768px) {
+    background: #38474d;
+    padding: 20px 0 40px;
+    position: relative;
+    left: auto;
+    bottom: auto;
+  }
+
+  .wrapper-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:after {
+      display: none;
+    }
+
+    @media(max-width: 1230px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+  }
+
+}
+
+.logo-footer {
+  padding-left: 110px;
+  position: relative;
+
+  > a {
+    display: block;
+    width: 97px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &:hover {
+      opacity: .7;
+    }
+
+  }
+
+  div {
+    margin-left: 10px;
+
+    span {
+      display: block;
+      color: #fff;
+      margin: 5px 0;
+
+      &:first-of-type {
+        font-family: "PT Sans Bold", sans-serif;
+      }
+
+    }
+
+  }
+
+  @media(max-width: 480px) {
+    padding: 0;
+
+    > a {
+      position: static;
+      margin: 0 auto 15px;
+    }
+
+    div {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+
+  }
+
+}
+
+.footer-nav {
+  display: block;
+  width: 450px;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    li {
+      display: block;
+
+      a {
+        display: block;
+        position: relative;
+        padding: 60px 0 0 0;
+        font-family: 'Exo2 Bold', sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        min-width: 60px;
+        text-align: center;
+        color: #fff;
+
+        &:before {
+          .smooth(.4s);
+
+          content: '';
+          display: block;
+          width: 60px;
+          height: 45px;
+          background: transparent url(../source/images/sprite-nav.png) no-repeat left top;
+          background-size: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+
+        &:hover:before {
+          top: 5px;
+        }
+
+      }
+
+      &:nth-child(2) a:before {background-position: -60px 0;}
+      &:nth-child(3) a:before {background-position: -120px 0;}
+      &:nth-child(4) a:before {background-position: -180px 0;}
+      &:nth-child(5) a:before {background-position: -240px 0;}
+
+    }
+
+  }
+
+  @media(max-width: 1230px) {
+    width: 100%;
+
+    ul {
+      justify-content: center;
+
+      li {
+        margin: 20px;
+      }
+
+    }
+
+  }
+
+  @media(max-width: 768px) {
+
+    ul {
+      display: block;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        vertical-align: top;
+        width: 85px;
+        margin: 20px;
+      }
+
+    }
+
+  }
+
+}
+
+.footer-contacts {
+
+  a {
+    font-family: 'Exo2 Regular', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  span {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    margin: 5px 0;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  @media(max-width: 1230px) {
+    text-align: center;
+  }
+
+}
+
+.social-links {
+
+  li {
+    display: inline-block;
+    vertical-align: middle;
+
+    a {
+      display: block;
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      font-size: 28px;
+      color: #fff;
+      text-align: center;
+      border: 2px solid transparent;
+
+      i {
+        font-size: inherit;
+        color: inherit;
+        line-height: 46px;
+      }
+
+      &:hover {
+        color: @color-green;
+        border: 2px solid @color-green;
+      }
+
+      &:active {
+        -webkit-transform: translateY(3px);
+        -moz-transform: translateY(3px);
+        -ms-transform: translateY(3px);
+        -o-transform: translateY(3px);
+        transform: translateY(3px);
+      }
+
+    }
+
+  }
+
+}
+
+@media(max-width: 1230px) {
+  .logo-footer,
+  .footer-contacts,
+  .social-links,
+  footer .custom-button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 20px;
+  }
 }
 
 /***********************************************************************************************************************
@@ -867,6 +1123,20 @@ footer[role='contentinfo'] {
         left: -25px;
       }
 
+      @media(max-width: 980px) {
+        padding: 0;
+
+        img {
+          display: none;
+        }
+
+      }
+
+    }
+
+    @media(max-width: 980px) {
+      max-width: 100%;
+      margin: 0 0 25px;
     }
 
   }
@@ -926,6 +1196,32 @@ footer[role='contentinfo'] {
 
     }
 
+    @media(max-width: 980px) {
+      position: static;
+      flex-direction: row;
+      width: 100%;
+    }
+
+  }
+
+  @media(max-width: 980px) {
+    padding: 70px 0 15px 0;
+  }
+
+  @media(max-width: 768px) {
+
+    .top-offers,
+    .top-links {
+      display: block;
+      text-align: center;
+    }
+
+    .top-offers li,
+    .top-links li {
+      display: inline-block;
+      margin: 10px;
+    }
+
   }
 
 }
@@ -935,7 +1231,8 @@ footer[role='contentinfo'] {
 ***********************************************************************************************************************/
 
 .services {
-  background: url(../source/images/background-blue.png) no-repeat 0 0;
+  background: url(../source/images/background-blue.png) no-repeat center top;
+  background-size: cover;
   padding: 100px 0 20px;
   margin-top: -50px;
   position: relative;
@@ -1007,6 +1304,24 @@ footer[role='contentinfo'] {
 
     }
 
+    @media(max-width: 1230px) {
+      display: block;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        vertical-align: top;
+        margin: 15px;
+      }
+
+    }
+
+  }
+
+  @media(max-width: 1230px) {
+    margin: 0;
+    background: @color-blue;
+    padding: 40px 0;
   }
 
 }

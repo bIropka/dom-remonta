@@ -63,7 +63,7 @@ $(window).ready(function() {
     if ($(window).width() < 641) {
         $('.calculator-header').insertAfter('.hours');
     } else {
-        $('.calculator-header').insertAfter('.logo-header-small');
+        $('.calculator-header').insertAfter('.logo-header');
     }
 
     $(window).resize(function () {
@@ -83,7 +83,7 @@ $(window).ready(function() {
         if ($(window).width() < 641) {
             $('.calculator-header').insertAfter('.hours');
         } else {
-            $('.calculator-header').insertAfter('.logo-header-small');
+            $('.calculator-header').insertAfter('.logo-header');
         }
 
     });
